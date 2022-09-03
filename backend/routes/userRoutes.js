@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {
-  wrappedRegister,
-  wrappedLogin,
-} = require("../controllers/userController");
+const { registerUser, loginUser } = require("../controllers/userController");
 
-router.post("/", wrappedRegister);
-router.post("/login", wrappedLogin);
+router.post("/", registerUser);
+router.post("/login", loginUser);
 
 module.exports = router;
