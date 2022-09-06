@@ -1,0 +1,27 @@
+$purple: #ad1fea;
+$blue: #4661e6;
+$dark-blue: #3a4374;
+$bright-white: #ffffff;
+$lighter-white: #f7f8fd;
+$darker-white: #f2f4ff;
+$dark-bluish-gray: #647196;
+$peach: #f49f85;
+$light-blue: #62bcfa;
+
+@mixin fontWeight($weight) {
+  font-family: "Jost", sans-serif;
+
+  $weights: (
+    regular: 400,
+    semi-bold: 600,
+    bold: 700,
+  );
+
+  $output: $weight;
+
+  @if map-has-key($weights, $weight) {
+    $output: map-get($weights, $weight);
+  }
+
+  font-weight: $output;
+}
