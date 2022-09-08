@@ -38,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const emailToken = generateEmailToken(user.name);
   console.log(emailToken);
 
-  verifyUserEmail(user.name, user.email, emailToken);
+  // verifyUserEmail(user.name, user.email, emailToken);
   if (user) {
     res.status(201).json({
       _id: user._id,
@@ -80,6 +80,12 @@ const loginUser = asyncHandler(async (req, res) => {
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
   res.send("Me");
+  const user = {
+    id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+  };
+  res.status(200).json(user);
 });
 
 // // @desc Verify Email
