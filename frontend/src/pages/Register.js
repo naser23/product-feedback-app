@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { register } from "../features/auth/authSlice";
+import { register, reset } from "../features/auth/authSlice";
 
 function Register() {
   const navigate = useNavigate();
@@ -10,6 +11,19 @@ function Register() {
   const { user, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    // when registration goes through
+    if (isSuccess || user) {
+      toast.success("User is registered");
+    }
+
+    dispatch(reset());
+  }, [isError, isSuccess, user, message, dispatch]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,9 +33,8 @@ function Register() {
     confirmPassword: "",
   });
 
-  const re = new RegExp(
-    "^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
-  );
+  // usernames can only contain letters, numbers, underscores and periods.
+  const usernameRegex = /^[a-z0-9_.]+$/;
 
   const { name, username, email, password, confirmPassword } = formData;
 
@@ -34,12 +47,18 @@ function Register() {
 
   function onSubmit(e) {
     e.preventDefault();
-    const newUsername = re.exec(username);
+    const newUsername = usernameRegex.exec(username);
+
+    // console.log(username.match(usernameRegex));
+    // console.log(newUsername);
 
     if (password !== confirmPassword) {
-      console.error("Passwords do not match");
+      toast.error("Passwords do not match");
     } else if (newUsername === null) {
       console.log(`Username: ${username} is invalid.`);
+      toast.error(
+        "Usernames can only contain letters, numbers, underscores and periods"
+      );
     } else {
       const userData = {
         name,
