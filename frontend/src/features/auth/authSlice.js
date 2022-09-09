@@ -18,7 +18,7 @@ export const register = createAsyncThunk(
     try {
       // console.log(user);
       const response = await axios.post(API_URL, user);
-      return response;
+      return response.data;
     } catch (error) {
       const message =
         (error.response &&
