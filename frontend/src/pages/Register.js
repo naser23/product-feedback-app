@@ -19,11 +19,11 @@ function Register() {
 
     // when registration goes through
     if (isSuccess || user) {
-      toast.success("User is registered");
+      navigate("/");
     }
 
     dispatch(reset());
-  }, [isError, isSuccess, user, message, dispatch]);
+  }, [isError, isSuccess, user, message, navigate, dispatch]);
 
   const [formData, setFormData] = useState({
     name: "",
