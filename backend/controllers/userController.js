@@ -8,15 +8,15 @@ const bcrypt = require("bcryptjs");
 // @route /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, username, email, password } = req.body;
 
   // Validation
-  if (!name || !email || !password) {
+  if (!name || !username || !email || !password) {
     res.status(400);
     throw new Error("Please include all fields");
   }
 
-  // If user already exists
+  // Find if user already exists
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -31,6 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
   // Create user
   const user = await User.create({
     name,
+    username,
     email,
     password: hashedPassword,
   });
@@ -43,6 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
+      username: user.username,
       email: user.email,
       token: generateToken(user._id),
     });
@@ -52,7 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Register a new user
+// @desc login user
 // @route /api/users/login
 // @access Public
 const loginUser = asyncHandler(async (req, res) => {

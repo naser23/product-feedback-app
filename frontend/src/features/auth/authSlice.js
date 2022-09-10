@@ -9,15 +9,18 @@ const initialState = {
   message: "",
 };
 
-const API_URL = "/api/users/";
+const API_URL = "/api/users";
 const LOGIN_URL = "/api/users/login";
 
 export const register = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
     try {
-      // console.log(user);
+      console.log(user);
       const response = await axios.post(API_URL, user);
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
       return response.data;
     } catch (error) {
       const message =
