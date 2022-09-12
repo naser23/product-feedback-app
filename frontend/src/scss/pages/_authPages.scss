@@ -5,8 +5,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  min-height: 50vh;
-  background-color: $bright-white;
+  min-height: 100vh;
   font-family: "Jost", sans-serif;
 
   .auth,
@@ -17,8 +16,9 @@
   .auth-container {
     display: flex;
     flex-direction: column;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     gap: 2rem;
+    background-color: $bright-white;
 
     .form-control {
       display: flex;

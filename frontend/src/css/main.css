@@ -8,13 +8,16 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background-color: #f7f8fd;
+}
+
+.container .navbar {
+  width: 100%;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
 }
 
 .auth {
@@ -29,8 +32,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  min-height: 50vh;
-  background-color: #ffffff;
+  min-height: 100vh;
   font-family: "Jost", sans-serif;
 }
 
@@ -48,8 +50,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   gap: 2rem;
+  background-color: #ffffff;
 }
 
 .auth .auth-container .form-control {
