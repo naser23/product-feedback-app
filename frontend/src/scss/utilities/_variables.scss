@@ -7,7 +7,20 @@ $darker-white: #f2f4ff;
 $dark-bluish-gray: #647196;
 $peach: #f49f85;
 $light-blue: #62bcfa;
+$logo-color: radial-gradient(
+  ellipse at right top,
+  rgba(232, 77, 112, 1) 0%,
+  rgba(163, 55, 246, 1) 60%,
+  rgba(40, 167, 237, 1) 100%
+);
 
+// $logo-color: radial-gradient(
+//   ellipse at top
+//   rgba(232, 77, 112, 1) 0%,
+//   rgba(163, 55, 246, 1) 60%,
+//   rgba(40, 167, 237, 1),
+//   100%
+// );
 @mixin fontWeight($weight) {
   font-family: "Jost", sans-serif;
 

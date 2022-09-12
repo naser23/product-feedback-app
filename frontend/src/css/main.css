@@ -18,6 +18,33 @@
   width: 100%;
   font-family: "Jost", sans-serif;
   font-weight: 400;
+  background-color: #ad1fea;
+}
+
+.container .navbar .logoArea {
+  background-image: radial-gradient(ellipse at right top, #e84d70 0%, #a337f6 60%, #28a7ed 100%);
+  color: white;
+  padding: 1rem 1rem;
+}
+
+.container .navbar .logoArea .logoHeader {
+  font-size: 1rem;
+}
+
+.container .navbar .logoArea .logoSubHeader {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 567.98px) {
+  .container .navbar {
+    width: 95%;
+    height: 10rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
 }
 
 .auth {
