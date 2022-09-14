@@ -1,9 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login, reset } from "../features/auth/authSlice";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isError, isLoading, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, isLoading, message, navigate, dispatch]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -21,6 +41,13 @@ function Login() {
 
   function onSubmit(e) {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
   }
 
   return (
