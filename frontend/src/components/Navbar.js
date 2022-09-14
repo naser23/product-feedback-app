@@ -3,6 +3,11 @@ import { BiLogIn } from "react-icons/bi";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
+import HamburgerIcon from "../assets/shared/mobile/icon-hamburger.svg";
+import closeIcon from "../assets/shared/mobile/icon-hamburger.svg";
+
+import CategoryArea from "./CategoryArea";
+import Roadmap from "./Roadmap";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -24,19 +29,25 @@ function Navbar() {
           <p className="logoSubHeader">Feedback Board</p>
         </div>
 
-        {user ? (
-          <div className="loginArea" onClick={onLogout}>
-            <BiLogIn className="authButton" /> Logout
+        <div className="buttonArea">
+          {user ? (
+            <div className="loginArea" onClick={onLogout}>
+              <BiLogIn className="authButton" /> Logout
+            </div>
+          ) : (
+            <div className="loginArea" onClick={() => navigate("/login")}>
+              <BiLogIn className="authButton" /> Login
+            </div>
+          )}
+
+          <div className="hamburgerMenu">
+            <img src={HamburgerIcon} alt="HamburgerIcon" />
           </div>
-        ) : (
-          <div className="loginArea" onClick={() => navigate("/login")}>
-            <BiLogIn className="authButton" /> Login
-          </div>
-        )}
+        </div>
       </section>
 
-      <section className="categoryArea"></section>
-      <section className="RoadmapArea"></section>
+      <CategoryArea />
+      <Roadmap />
     </header>
   );
 }
