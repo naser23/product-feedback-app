@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+import PrivateRoute from "./components/PrivateRoute";
 import "react-toastify/dist/ReactToastify.css";
 import "./css/main.css";
 
@@ -13,7 +14,9 @@ function App() {
       <Router>
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<Home />} />
+            </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

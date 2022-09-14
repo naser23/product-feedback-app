@@ -23,7 +23,7 @@ function Login() {
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, isLoading, message, navigate, dispatch]);
+  }, [isError, isSuccess, user, isLoading, message, navigate, dispatch]);
 
   const [formData, setFormData] = useState({
     email: "",
