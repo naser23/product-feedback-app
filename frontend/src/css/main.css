@@ -19,13 +19,24 @@
   min-height: 100%;
 }
 
-.container .navbar {
+@media (min-width: 767.98px) {
+  .container .home {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.navbar {
   width: 100%;
   font-family: "Jost", sans-serif;
   font-weight: 400;
 }
 
-.container .navbar .logoArea {
+.navbar .logoArea {
   background-image: radial-gradient(ellipse at right top, #e84d70 0%, #a337f6 60%, #28a7ed 100%);
   color: white;
   padding: 1rem 1rem;
@@ -40,15 +51,15 @@
           align-items: center;
 }
 
-.container .navbar .logoArea .logoHeader {
+.navbar .logoArea .logoHeader {
   font-size: 1rem;
 }
 
-.container .navbar .logoArea .logoSubHeader {
+.navbar .logoArea .logoSubHeader {
   font-size: 0.9rem;
 }
 
-.container .navbar .logoArea .buttonArea {
+.navbar .logoArea .buttonArea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,7 +72,7 @@
   gap: 1.5rem;
 }
 
-.container .navbar .logoArea .buttonArea .hamburgerMenu {
+.navbar .logoArea .buttonArea .hamburgerMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,28 +81,77 @@
           justify-content: center;
 }
 
-.container .navbar .logoArea .loginArea {
+.navbar .logoArea .loginArea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 0.25rem;
 }
 
-.container .navbar .logoArea .loginArea:hover {
+.navbar .logoArea .loginArea:hover {
   cursor: pointer;
 }
 
-.container .navbar .logoArea .loginArea .authButton {
+.navbar .logoArea .loginArea .authButton {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.container .navbar .categoryArea {
-  display: none;
+.navbar .categoryArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.container .navbar .roadmapArea {
-  display: none;
+.navbar .categoryArea .categories {
+  width: 85%;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  border-radius: 10px;
+}
+
+.navbar .categoryArea .categories .category {
+  padding: 0.5rem 1rem;
+  background-color: #f7f8fd;
+  border-radius: 10px;
+  color: #4661e6;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+
+.navbar .categoryAreaMobile {
+  background-color: #ffffff;
+}
+
+.navbar .roadmapArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar .roadmapArea .roadmapContent {
+  width: 85%;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  border-radius: 10px;
 }
 
 @media (min-width: 567.98px) {
@@ -127,35 +187,29 @@
 }
 
 @media (min-width: 767.98px) {
-  .container .home {
+  .navbar .categoryArea {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
-  .container .navbar .categoryArea {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    background-color: #ad1fea;
-  }
-  .container .navbar .roadmapArea {
+  .navbar .roadmapArea {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     background-color: #4661e6;
   }
-  .container .navbar .logoArea,
-  .container .navbar .categoryArea,
-  .container .navbar .roadmapArea {
+  .navbar .logoArea .buttonArea .hamburgerMenu {
+    display: none;
+  }
+  .navbar .logoArea,
+  .navbar .categoryArea,
+  .navbar .roadmapArea {
     border-radius: 10px;
   }
 }
 
 @media (min-width: 991.98px) {
-  .container .navbar {
+  .navbar {
     width: 30%;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;

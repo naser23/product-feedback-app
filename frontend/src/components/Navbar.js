@@ -1,5 +1,6 @@
 import React from "react";
 import { BiLogIn } from "react-icons/bi";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -12,6 +13,7 @@ import Roadmap from "./Roadmap";
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
 
@@ -19,6 +21,11 @@ function Navbar() {
     dispatch(logout());
     dispatch(reset());
     navigate("/");
+  }
+
+  function toggleModal() {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
   }
 
   return (
@@ -40,7 +47,7 @@ function Navbar() {
             </div>
           )}
 
-          <div className="hamburgerMenu">
+          <div className="hamburgerMenu" onClick={toggleModal}>
             <img src={HamburgerIcon} alt="HamburgerIcon" />
           </div>
         </div>
