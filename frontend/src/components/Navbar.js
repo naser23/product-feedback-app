@@ -5,10 +5,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import HamburgerIcon from "../assets/shared/mobile/icon-hamburger.svg";
-import closeIcon from "../assets/shared/mobile/icon-hamburger.svg";
+import CloseIcon from "../assets/shared/mobile/icon-close.svg";
 
 import CategoryArea from "./CategoryArea";
 import Roadmap from "./Roadmap";
+import MobileNav from "./MobileNav";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ function Navbar() {
 
   function toggleModal() {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   }
 
   return (
@@ -48,11 +48,12 @@ function Navbar() {
           )}
 
           <div className="hamburgerMenu" onClick={toggleModal}>
-            <img src={HamburgerIcon} alt="HamburgerIcon" />
+            <img src={isOpen ? CloseIcon : HamburgerIcon} alt="Menu Icon" />
           </div>
         </div>
       </section>
 
+      {isOpen && <MobileNav />}
       <CategoryArea />
       <Roadmap />
     </header>

@@ -34,6 +34,7 @@
   width: 100%;
   font-family: "Jost", sans-serif;
   font-weight: 400;
+  position: fixed;
 }
 
 .navbar .logoArea {
@@ -98,12 +99,7 @@
 }
 
 .navbar .categoryArea {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: none;
 }
 
 .navbar .categoryArea .categories {
@@ -124,21 +120,101 @@
   background-color: #f7f8fd;
   border-radius: 10px;
   color: #4661e6;
-  font-family: "Jost", sans-serif;
-  font-weight: 600;
-}
-
-.navbar .categoryAreaMobile {
-  background-color: #ffffff;
-}
-
-.navbar .roadmapArea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+
+.navbar .categoryArea .categories .category:hover {
+  color: white;
+  background-color: #4661e6;
+  cursor: pointer;
+}
+
+.navbar .mobileNav {
+  width: 70%;
+  height: calc(100vh - 4.375rem);
+  background-color: #f2f4ff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  right: 0;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.navbar .mobileNav .categoryAreaMobile {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  height: 30%;
+}
+
+.navbar .mobileNav .categoryAreaMobile .categoriesMobile {
+  background-color: #ffffff;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  gap: 0.5rem;
+  border-radius: 10px;
+}
+
+.navbar .mobileNav .categoryAreaMobile .categoriesMobile .categoryMobile {
+  padding: 0.5rem 1rem;
+  background-color: #f7f8fd;
+  border-radius: 10px;
+  color: #4661e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+
+.navbar .mobileNav .categoryAreaMobile .categoriesMobile .categoryMobile:hover {
+  color: white;
+  background-color: #4661e6;
+  cursor: pointer;
+}
+
+.navbar .roadmapArea {
+  display: none;
 }
 
 .navbar .roadmapArea .roadmapContent {
@@ -152,6 +228,15 @@
   padding: 1rem 1.5rem;
   gap: 1rem;
   border-radius: 10px;
+}
+
+.navbar .roadmapAreaMobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (min-width: 567.98px) {
@@ -191,12 +276,24 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .navbar .categoryAreaMobile {
+    display: none;
   }
   .navbar .roadmapArea {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     background-color: #4661e6;
+  }
+  .navbar .roadmapAreaMobile {
+    display: none;
   }
   .navbar .logoArea .buttonArea .hamburgerMenu {
     display: none;
