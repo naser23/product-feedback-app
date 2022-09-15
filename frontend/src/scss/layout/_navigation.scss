@@ -55,8 +55,8 @@
       background-color: $bright-white;
       display: flex;
       flex-wrap: wrap;
-      padding: 1rem 1.5rem;
-      gap: 1rem;
+      padding: 1rem 1rem;
+      gap: 0.5rem;
       border-radius: 10px;
 
       .category {
@@ -79,57 +79,6 @@
     }
   }
 
-  .mobileNav {
-    width: 70%;
-    height: calc(100vh - 4.375rem);
-    background-color: $darker-white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    right: 0;
-    padding: 1rem 1rem;
-    gap: 1rem;
-    z-index: 10;
-
-    .categoryAreaMobile {
-      background-color: $bright-white;
-      display: flex;
-      justify-content: center;
-      border-radius: 10px;
-      height: 30%;
-
-      .categoriesMobile {
-        background-color: $bright-white;
-        height: 30%;
-        display: flex;
-        flex-wrap: wrap;
-        padding: 1rem 1.5rem;
-
-        gap: 0.5rem;
-        border-radius: 10px;
-
-        .categoryMobile {
-          padding: 0.5rem 1rem;
-          background-color: $lighter-white;
-          border-radius: 10px;
-          color: $blue;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: all 0.2s ease-in-out;
-          @include fontWeight(semi-bold);
-
-          &:hover {
-            color: white;
-            background-color: $blue;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
-
   .roadmapArea {
     display: none;
 
@@ -142,11 +91,6 @@
       gap: 1rem;
       border-radius: 10px;
     }
-  }
-
-  .roadmapAreaMobile {
-    display: flex;
-    justify-content: center;
   }
 }
 
@@ -182,18 +126,62 @@
       justify-content: center;
     }
 
-    .categoryAreaMobile {
-      display: none;
-    }
-
     .roadmapArea {
       display: flex;
-      justify-content: center;
-      background-color: $blue;
-    }
+      flex-direction: column;
+      justify-content: space-around;
+      // align-items: center;
+      background-color: $bright-white;
+      padding: 1rem;
 
-    .roadmapAreaMobile {
-      display: none;
+      .options {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .option {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+          }
+        }
+      }
+
+      .roadmapHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .peachDot {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 5px;
+        background-color: $peach;
+      }
+
+      .purpleDot {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 5px;
+        background-color: $purple;
+      }
+
+      .blueDot {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 5px;
+        background-color: $light-blue;
+      }
     }
 
     .logoArea {
