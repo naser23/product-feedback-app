@@ -11,21 +11,24 @@ function Roadmap() {
       <div className="roadmapProgress">
         <ul className="options">
           <li className="option">
-            <p>
-              <span className="peachDot"></span> Planned
-            </p>
-            <span className="optionCount">2</span>
+            <div>
+              <span className="peachDot"></span>
+              <p>Planned</p>
+            </div>
+            <p className="optionCount">2</p>
           </li>
           <li className="option">
-            <p>
-              <span className="purpleDot"></span>In-Progress
-            </p>
+            <div>
+              <span className="purpleDot"></span>
+              <p>In-Progress</p>
+            </div>
             <span className="optionCount">3</span>
           </li>
           <li className="option">
-            <p>
-              <span className="blueDot"></span>Live
-            </p>
+            <div>
+              <span className="blueDot"></span>
+              <p>Live</p>
+            </div>
             <span className="optionCount">1</span>
           </li>
         </ul>

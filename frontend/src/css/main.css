@@ -231,7 +231,7 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .navbar .roadmapArea .options .option p {
+  .navbar .roadmapArea .options .option div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

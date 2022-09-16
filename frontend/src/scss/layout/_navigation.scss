@@ -144,7 +144,16 @@
           display: flex;
           justify-content: space-between;
 
-          p {
+          // &:before {
+          //   content: "";
+          //   display: block;
+          //   width: 0.5rem;
+          //   height: 0.5rem;
+          //   border-radius: 5px;
+          //   background-color: $peach;
+          // }
+
+          div {
             display: flex;
             justify-content: space-between;
             align-items: center;
