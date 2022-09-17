@@ -1,5 +1,40 @@
+@import url("./css/authPages.css");
+@import url(./css/layout.css);
+@import url("./css/layout.css");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --purple: #ad1fea;
+  --blue: #4661e6;
+  --dark-blue: #3a4374;
+  --bright-white: #ffffff;
+  --lighter-white: #f7f8fd;
+  --darker-white: #f2f4ff;
+  --dark-bluish-gray: #647196;
+  --peach: #f49f85;
+  --light-blue: #62bcfa;
+  --logo-color: radial-gradient(
+    ellipse at right top,
+    rgba(232, 77, 112, 1) 0%,
+    rgba(163, 55, 246, 1) 60%,
+    rgba(40, 167, 237, 1) 100%
+  );
+}
+
+.fontRegular {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+}
+.fontSemiBold {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+.fontBold {
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
 }

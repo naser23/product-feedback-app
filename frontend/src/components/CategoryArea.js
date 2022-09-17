@@ -6,7 +6,10 @@ function CategoryArea() {
     <section className="categoryArea">
       <div className="categories">
         {categories.map((category) => (
-          <p className="category" key={categories.indexOf(category)}>
+          <p
+            className="category fontSemiBold"
+            key={categories.indexOf(category)}
+          >
             {category}
           </p>
         ))}

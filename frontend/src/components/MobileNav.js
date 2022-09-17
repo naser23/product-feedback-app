@@ -9,7 +9,10 @@ function MobileNav() {
       <section className="categoryAreaMobile">
         <div className="categoriesMobile">
           {categories.map((category) => (
-            <p className="categoryMobile" key={categories.indexOf(category)}>
+            <p
+              className="categoryMobile fontSemiBold"
+              key={categories.indexOf(category)}
+            >
               {category}
             </p>
           ))}

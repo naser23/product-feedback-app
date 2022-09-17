@@ -53,8 +53,8 @@ function Login() {
   return (
     <main className="auth">
       <div className="auth-container">
-        <h1>Login</h1>
-        <form className="form-control" onSubmit={onSubmit}>
+        <h1 className="fontBold">Login</h1>
+        <form className="form-control fontRegular" onSubmit={onSubmit}>
           <input
             className="input-field"
             type="email"

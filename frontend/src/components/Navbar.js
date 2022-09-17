@@ -29,7 +29,7 @@ function Navbar() {
   }
 
   return (
-    <header className="navbar">
+    <header className="navbar fontRegular">
       <section className="logoArea">
         <div className="logoText">
           <h3 className="logoHeader">Frontend Mentor</h3>
