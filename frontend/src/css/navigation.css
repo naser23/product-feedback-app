@@ -108,9 +108,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
     background-color: var(--bright-white);
-    padding: 1rem;
+    padding: 1.5rem;
+    gap: 1rem;
   }
 
   .options {
@@ -131,6 +131,7 @@
     align-items: center;
     gap: 1rem;
   }
+
   .roadmapHeader {
     display: flex;
     justify-content: space-between;
@@ -188,6 +189,10 @@
     width: 30%;
     grid-template-columns: 1fr;
     height: 70vh;
+  }
+
+  .categories {
+    width: 100%;
   }
 }
 @media (min-width: 1199.98px) {

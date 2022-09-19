@@ -21,8 +21,8 @@
 }
 @media (min-width: 991.98px) {
   .container {
-    display: grid;
-    grid-template-columns: 0.5fr 2fr;
+    /* display: grid;
+    grid-template-columns: 0.5fr 2fr; */
   }
 }
 @media (min-width: 1199.98px) {

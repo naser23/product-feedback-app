@@ -19,11 +19,11 @@ function MobileNav() {
         </div>
       </section>
       <section className="roadmapAreaMobile">
-        <div className="roadmapHeader">
+        <div className="roadmapHeaderMobile">
           <h3>Roadmap</h3>
           <p>View</p>
         </div>
-        <div className="roadmapProgress">
+        <div className="roadmapProgressMobile">
           <ul className="options">
             <li className="option">
               <div>
