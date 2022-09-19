@@ -14,6 +14,11 @@
   gap: 0.5rem;
 }
 
+.suggestionCount {
+  display: none;
+  color: white;
+}
+
 #sortingOptions {
   background: none;
   border: none;
@@ -24,6 +29,12 @@
   background-color: var(--dark-blue);
 }
 
+#sortingOptions option:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--purple);
+}
+
 .addFeedback {
   padding: 0.5rem 1rem;
   background-color: var(--purple);
@@ -32,10 +43,25 @@
   border-radius: 5px;
 }
 
+.addFeedback:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 @media (min-width: 567.98px) {
   .feedbackHeader {
     width: 100%;
     border-radius: 10px;
+  }
+
+  .suggestionCount {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .suggestionIcon {
+    width: 2rem;
+    height: 2rem;
   }
 }
 

@@ -30,7 +30,7 @@
 }
 @media (min-width: 991.98px) {
   .home {
-    padding: 4rem;
+    padding: 4rem 15%;
     display: grid;
     grid-template-columns: 0.5fr 2fr;
     align-items: start;

@@ -1,4 +1,5 @@
 import React from "react";
+import SuggestionIcon from "../assets/suggestions/icon-suggestions.svg";
 
 function FeedbackHeader() {
   const sortingOptions = [
@@ -9,6 +10,14 @@ function FeedbackHeader() {
   ];
   return (
     <div className="feedbackHeader">
+      <div className="suggestionCount">
+        <img
+          className="suggestionIcon"
+          src={SuggestionIcon}
+          alt="Suggestion Icon"
+        />
+        <h2 className="suggestionHeader fontBold">0 Suggestions</h2>
+      </div>
       <div className="sortBy">
         <label className="fontRegular" htmlFor="feedback ">
           Sort By:

@@ -1,5 +1,6 @@
 import React from "react";
 import FeedbackHeader from "../components/FeedbackHeader";
+import FeedbackList from "../components/FeedbackList";
 import Navbar from "../components/Navbar";
 
 function Home() {
@@ -8,10 +9,7 @@ function Home() {
       <Navbar />
       <div className="homeContent">
         <FeedbackHeader />
-        <div>asigkhag</div>
-        <div>asigkhag</div>
-        <div>asigkhag</div>
-        <div>asigkhag</div>
+        <FeedbackList />
       </div>
     </main>
   );
