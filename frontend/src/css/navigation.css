@@ -1,6 +1,7 @@
 .navbar {
   width: 100%;
-  position: fixed;
+  position: static;
+  height: 25%;
 }
 
 .logoArea {
@@ -187,7 +188,7 @@
 }
 @media (min-width: 991.98px) {
   .navbar {
-    width: 30%;
+    width: 100%;
     grid-template-columns: 1fr;
     height: 70vh;
   }

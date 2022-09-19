@@ -1,6 +1,6 @@
 .mobileNav {
   width: 70%;
-  height: calc(100vh - 4.375rem);
+  height: calc(100vh - 76px);
   background-color: var(--darker-white);
   display: flex;
   flex-direction: column;
@@ -9,6 +9,7 @@
   right: 0;
   padding: 1rem 1rem;
   gap: 1rem;
+  overflow-y: hidden;
   z-index: 10;
 }
 

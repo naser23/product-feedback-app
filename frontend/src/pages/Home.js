@@ -6,7 +6,13 @@ function Home() {
   return (
     <main className="home">
       <Navbar />
-      <FeedbackHeader />
+      <div className="homeContent">
+        <FeedbackHeader />
+        <div>asigkhag</div>
+        <div>asigkhag</div>
+        <div>asigkhag</div>
+        <div>asigkhag</div>
+      </div>
     </main>
   );
 }
