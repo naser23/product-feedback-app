@@ -1,5 +1,12 @@
 .feedbackList {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
   background-color: lightblue;
+}
+
+.feedbackItem {
+  padding: 1rem;
+  background-color: var(--lighter-white);
 }
