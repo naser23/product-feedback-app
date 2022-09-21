@@ -1,5 +1,6 @@
 import React from "react";
 import SuggestionIcon from "../assets/suggestions/icon-suggestions.svg";
+import { useNavigate } from "react-router-dom";
 
 function FeedbackHeader() {
   const sortingOptions = [
@@ -8,6 +9,9 @@ function FeedbackHeader() {
     "Most Comments",
     "Least Comments",
   ];
+
+  const navigate = useNavigate();
+
   return (
     <div className="feedbackHeader">
       <div className="suggestionCount">
@@ -30,7 +34,12 @@ function FeedbackHeader() {
           ))}
         </select>
       </div>
-      <button className="addFeedback fontSemiBold">+ Add Feedback</button>
+      <button
+        onClick={() => navigate("/add-feedback")}
+        className="addFeedback fontSemiBold"
+      >
+        + Add Feedback
+      </button>
     </div>
   );
 }
