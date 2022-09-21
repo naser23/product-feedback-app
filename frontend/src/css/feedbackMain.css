@@ -63,6 +63,7 @@
 .feedbackCategory {
   padding: 0.5rem 1rem;
   background-color: var(--lighter-white);
+  padding-top: 10px;
   border-radius: 10px;
   color: var(--blue);
   display: flex;

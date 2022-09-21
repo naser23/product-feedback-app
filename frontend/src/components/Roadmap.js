@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Roadmap() {
   return (
     <section className="roadmapArea">
       <div className="roadmapHeader">
         <h3>Roadmap</h3>
-        <p>View</p>
+        <Link to="/roadmap">View</Link>
       </div>
 
       <div className="roadmapProgress">

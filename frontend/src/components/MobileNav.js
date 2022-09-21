@@ -1,5 +1,7 @@
 import React from "react";
 import Roadmap from "./Roadmap";
+import { Link } from "react-router-dom";
+import RoadmapPage from "../pages/RoadmapPage";
 
 function MobileNav() {
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
@@ -21,7 +23,9 @@ function MobileNav() {
       <section className="roadmapAreaMobile">
         <div className="roadmapHeaderMobile">
           <h3>Roadmap</h3>
-          <p>View</p>
+          <Link to="/roadmap" element={<RoadmapPage />}>
+            View
+          </Link>
         </div>
         <div className="roadmapProgressMobile">
           <ul className="options">
