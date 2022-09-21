@@ -1,13 +1,43 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 function AddFeedback() {
   const categories = ["UI", "UX", "Enhancement", "Bug", "Feature"];
+
+  const [formData, setFormData] = useState({
+    title: "",
+    category: "UI",
+    feedbackDetail: "",
+  });
+
+  const { title, category, feedbackDetail } = formData;
 
   const navigate = useNavigate();
 
   function onSubmit(e) {
     e.preventDefault();
+
+    if (!title || !category || !feedbackDetail) {
+      toast.error("Please include all fields");
+    } else {
+      const newSuggestion = {
+        title,
+        category,
+        feedbackDetail,
+      };
+
+      navigate("/");
+      console.log(newSuggestion);
+    }
+  }
+
+  function onChange(e) {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
   }
 
   return (
@@ -22,7 +52,7 @@ function AddFeedback() {
                 Add a short, descriptive headline
               </p>
             </label>
-            <input type="text" id="title" />
+            <input type="text" id="title" value={title} onChange={onChange} />
           </div>
           <div className="form-group">
             <label>
@@ -31,9 +61,19 @@ function AddFeedback() {
                 Choose a category for your feedback
               </p>
             </label>
-            <select className="fontRegular" name="category" id="category">
+            <select
+              className="fontRegular"
+              name="category"
+              id="category"
+              value={category}
+              onChange={onChange}
+            >
               {categories.map((category) => (
-                <option key={categories.indexOf(category)} value={category}>
+                <option
+                  key={categories.indexOf(category)}
+                  id={category}
+                  value={category}
+                >
                   {category}
                 </option>
               ))}
@@ -51,13 +91,15 @@ function AddFeedback() {
               className="fontRegular"
               name="feedbackDetail"
               id="feedbackDetail"
+              value={feedbackDetail}
+              onChange={onChange}
               rows="5"
             ></textarea>
           </div>
 
           <div className="formButtons">
             <button
-              onClick={() => navigate("/")}
+              onClick={onSubmit}
               className="addFeedback formButton fontSemiBold"
             >
               + Add Feedback
