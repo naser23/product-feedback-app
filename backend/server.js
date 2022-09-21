@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/feedback", require("./routes/feedbackRoutes"));
 
 app.use(errorHandler);
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
