@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 const feedbackSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
     title: {
       type: String,
       required: [true, "Please add a title for your suggestion"],
@@ -15,7 +10,7 @@ const feedbackSchema = mongoose.Schema(
       type: String,
       required: [true, "Please pick a catgegory for your Suggestion"],
     },
-    details: {
+    description: {
       type: String,
       required: [true, "Please add a Description for your suggestion"],
     },
