@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createSuggestion, reset } from "../features/feedback/feedbackSlice";
 import { toast } from "react-toastify";
 
 function AddFeedback() {
@@ -12,9 +14,27 @@ function AddFeedback() {
     feedbackDetail: "",
   });
 
-  const { title, category, feedbackDetail } = formData;
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { isError, isSuccess, isLoading, message } = useSelector(
+    (state) => state.feedback
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [dispatch, isError, isSuccess, isLoading, message]);
+
+  const { title, category, feedbackDetail } = formData;
 
   function onSubmit(e) {
     e.preventDefault();
@@ -27,8 +47,7 @@ function AddFeedback() {
         category,
         feedbackDetail,
       };
-
-      navigate("/");
+      dispatch(createSuggestion(newSuggestion));
       console.log(newSuggestion);
     }
   }

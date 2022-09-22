@@ -15,7 +15,25 @@ const API_URL = "/api/feedback/";
 // Creating new suggestion
 export const createSuggestion = createAsyncThunk(
   "feedback/add-feedback",
-  async (suggestionData, thunkAPI) => {}
+  async (suggestionData, thunkAPI, token) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(API_URL, suggestionData, config);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
 );
 
 // Getting All suggestions
