@@ -10,7 +10,7 @@ const initialState = {
   message: "",
 };
 
-const API_URL = "/api/feedback/";
+const API_URL = "/api/feedback";
 
 // Creating new suggestion
 export const createSuggestion = createAsyncThunk(
