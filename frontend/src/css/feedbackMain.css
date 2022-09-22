@@ -108,6 +108,10 @@
 @media (min-width: 767.98px) {
 }
 @media (min-width: 991.98px) {
+  .feedbackList {
+    gap: 1rem;
+  }
+
   .feedbackItem {
     margin: 0;
   }

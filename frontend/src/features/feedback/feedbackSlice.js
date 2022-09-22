@@ -10,6 +10,8 @@ const initialState = {
   message: "",
 };
 
+const API_URL = "/api/feedback/";
+
 // Creating new suggestion
 export const createSuggestion = createAsyncThunk(
   "feedback/add-feedback",
@@ -19,7 +21,25 @@ export const createSuggestion = createAsyncThunk(
 // Getting All suggestions
 export const getSuggestions = createAsyncThunk(
   "feedback/get-all",
-  async (suggestionData, thunkAPI) => {}
+  async (suggestionData, thunkAPI, token) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(API_URL, config);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
 );
 
 // Get singular suggestion
