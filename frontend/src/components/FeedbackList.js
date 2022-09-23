@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FeedbackItem from "./FeedbackItem";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getSuggestions,
-  getSuggestion,
-} from "../features/feedback/feedbackSlice";
+import { getSuggestions } from "../features/feedback/feedbackSlice";
 import { reset } from "../features/feedback/feedbackSlice";
 
 function FeedbackList() {
@@ -14,9 +11,20 @@ function FeedbackList() {
 
   const dispatch = useDispatch();
 
+  // trying to make something happen on unmount.
+  useEffect(() => {
+    return () => {
+      if (isSuccess) {
+        dispatch(reset());
+      }
+    };
+  }, [dispatch, isSuccess]);
+
   useEffect(() => {
     // make the request for the tickets.
     dispatch(getSuggestions());
+
+    // WHY THE FUCK IS THIS NOT RUNNING
     return () => {
       if (isSuccess) {
         dispatch(reset());
