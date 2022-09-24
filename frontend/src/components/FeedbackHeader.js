@@ -1,6 +1,8 @@
 import React from "react";
 import SuggestionIcon from "../assets/suggestions/icon-suggestions.svg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { reset } from "../features/feedback/feedbackSlice";
 
 function FeedbackHeader() {
   const sortingOptions = [
@@ -11,6 +13,12 @@ function FeedbackHeader() {
   ];
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function resetAndNavigate() {
+    dispatch(reset());
+    navigate("/add-feedback");
+  }
 
   return (
     <div className="feedbackHeader">
@@ -34,10 +42,7 @@ function FeedbackHeader() {
           ))}
         </select>
       </div>
-      <button
-        onClick={() => navigate("/add-feedback")}
-        className="addFeedback fontSemiBold"
-      >
+      <button onClick={resetAndNavigate} className="addFeedback fontSemiBold">
         + Add Feedback
       </button>
     </div>

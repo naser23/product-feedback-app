@@ -28,11 +28,10 @@ function AddFeedback() {
 
     if (isSuccess) {
       dispatch(reset());
-      navigate("/");
     }
 
     dispatch(reset());
-  }, [dispatch, isError, isSuccess, isLoading, message]);
+  }, [dispatch, navigate, isError, isSuccess, isLoading, message]);
 
   const { title, category, feedbackDetail } = formData;
 
@@ -47,6 +46,10 @@ function AddFeedback() {
         category,
         feedbackDetail,
       };
+
+      if (isSuccess) {
+        navigate("/");
+      }
       dispatch(createSuggestion(newSuggestion));
       console.log(newSuggestion);
     }

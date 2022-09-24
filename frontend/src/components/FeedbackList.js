@@ -11,20 +11,13 @@ function FeedbackList() {
 
   const dispatch = useDispatch();
 
-  // trying to make something happen on unmount.
-  useEffect(() => {
-    return () => {
-      if (isSuccess) {
-        dispatch(reset());
-      }
-    };
-  }, [dispatch, isSuccess]);
-
   useEffect(() => {
     // make the request for the tickets.
     dispatch(getSuggestions());
 
+    // trying to make something happen on unmount.
     // WHY THE FUCK IS THIS NOT RUNNING
+    // Come back to this later on
     return () => {
       if (isSuccess) {
         dispatch(reset());
