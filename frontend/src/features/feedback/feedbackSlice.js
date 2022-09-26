@@ -73,6 +73,21 @@ export const getSuggestion = createAsyncThunk(
   async (suggestionData, thunkAPI) => {}
 );
 
+// Change upvote count
+export const changeUpvoteCount = createAsyncThunk(
+  "feedback/upvote-count",
+  async (suggestionData, thunkAPI) => {
+    // find current suggestion
+    try {
+      console.log("upvote");
+    } catch (error) {
+      console.error(error);
+    }
+
+    // make post request to update the upvote count
+  }
+);
+
 export const feedbackSlice = createSlice({
   name: "feedback",
   initialState,
@@ -121,6 +136,16 @@ export const feedbackSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      // Reducers for changing upvote count
+      .addCase(changeUpvoteCount.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.suggestion.map((suggestion) =>
+          // find the suggestion using the _id and increase the upvotes by 1
+          suggestion._id === action.payload._id
+            ? suggestion.upvotes + 1
+            : suggestion
+        );
       });
   },
 });

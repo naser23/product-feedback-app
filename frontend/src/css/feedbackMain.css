@@ -26,6 +26,25 @@
   padding: 0.5rem 1rem;
   border-radius: 10px;
   gap: 0.5rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.active-upvotes {
+  order: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  background-color: var(--blue);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  gap: 0.5rem;
+  transition: all 0.1s ease-in-out;
+  color: white;
+}
+
+.active-upvotes-img {
+  filter: brightness(500%);
 }
 
 .upvotes img {
@@ -81,6 +100,14 @@
   }
 
   .upvotes {
+    order: 0;
+    height: 3rem;
+    width: 3rem;
+    margin: auto;
+    flex-direction: column;
+  }
+
+  .active-upvotes {
     order: 0;
     height: 3rem;
     width: 3rem;

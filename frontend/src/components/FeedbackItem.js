@@ -1,13 +1,26 @@
 import React from "react";
+import { useState } from "react";
 import UpvoteIcon from "../assets/shared/icon-arrow-up.svg";
 import CommentBubble from "../assets/shared/icon-comments.svg";
+import { changeUpvoteCount, reset } from "../features/feedback/feedbackSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 function FeedbackItem({ item }) {
   const { category, description, title, upvotes } = item;
+
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <div className="feedbackItem">
-      <div className="upvotes">
-        <img src={UpvoteIcon} alt="UpvoteIcon" />
+      <div
+        className={isActive ? "active-upvotes" : "upvotes"}
+        onClick={() => setIsActive(!isActive)}
+      >
+        <img
+          src={UpvoteIcon}
+          alt="UpvoteIcon"
+          className={isActive ? "active-upvotes-img" : ""}
+        />
         <p className="fontRegular">{upvotes}</p>
       </div>
       <div className="feedbackText">
