@@ -11,6 +11,7 @@ const initialState = {
 };
 
 const API_URL = "/api/feedback";
+const ADD_FEEDBACK_URL = "/api/feedback/add-feedback";
 
 // Creating new suggestion
 export const createSuggestion = createAsyncThunk(
@@ -22,7 +23,11 @@ export const createSuggestion = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.post(API_URL, suggestionData, config);
+      const response = await axios.post(
+        ADD_FEEDBACK_URL,
+        suggestionData,
+        config
+      );
       return response.data;
     } catch (error) {
       const message =

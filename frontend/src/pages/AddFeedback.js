@@ -38,6 +38,10 @@ function AddFeedback() {
   function onSubmit(e) {
     e.preventDefault();
 
+    title ? console.log(title) : console.log(title);
+    console.log(category);
+    console.log(feedbackDetail);
+
     if (!title || !category || !feedbackDetail) {
       toast.error("Please include all fields");
     } else {
