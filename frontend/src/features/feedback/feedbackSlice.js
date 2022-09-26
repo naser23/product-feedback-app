@@ -16,8 +16,9 @@ const ADD_FEEDBACK_URL = "/api/feedback/add-feedback";
 // Creating new suggestion
 export const createSuggestion = createAsyncThunk(
   "feedback/add-feedback",
-  async (suggestionData, thunkAPI, token) => {
+  async (suggestionData, thunkAPI) => {
     try {
+      const token = thunkAPI.getState().auth.user.token;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -44,8 +45,9 @@ export const createSuggestion = createAsyncThunk(
 // Getting All suggestions
 export const getSuggestions = createAsyncThunk(
   "feedback/get-all",
-  async (suggestionData, thunkAPI, token) => {
+  async (suggestionData, thunkAPI) => {
     try {
+      const token = thunkAPI.getState().auth.user.token;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,

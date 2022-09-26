@@ -28,21 +28,23 @@ function AddFeedback() {
 
     if (isSuccess) {
       dispatch(reset());
+      navigate("/");
     }
 
     dispatch(reset());
-  }, [dispatch, navigate, isError, isSuccess, isLoading, message]);
+  }, [dispatch, navigate, isError, isSuccess, message]);
 
   const { title, category, feedbackDetail } = formData;
 
   function onSubmit(e) {
     e.preventDefault();
 
-    title ? console.log(title) : console.log(title);
+    console.log(title);
     console.log(category);
     console.log(feedbackDetail);
 
     if (!title || !category || !feedbackDetail) {
+      console.log("A field should be missing");
       toast.error("Please include all fields");
     } else {
       const newSuggestion = {
@@ -51,11 +53,7 @@ function AddFeedback() {
         feedbackDetail,
       };
 
-      if (isSuccess) {
-        navigate("/");
-      }
       dispatch(createSuggestion(newSuggestion));
-      console.log(newSuggestion);
     }
   }
 
