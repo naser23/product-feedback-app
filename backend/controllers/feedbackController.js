@@ -21,6 +21,8 @@ const getSuggestions = asyncHandler(async (req, res) => {
 const addSuggestion = asyncHandler(async (req, res) => {
   const { title, category, description } = req.body;
 
+  console.log(title, category, description);
+
   if (!title || !category || !description) {
     res.status(400);
     throw new Error("Please include all fields");

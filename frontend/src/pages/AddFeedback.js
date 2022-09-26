@@ -11,7 +11,7 @@ function AddFeedback() {
   const [formData, setFormData] = useState({
     title: "",
     category: "UI",
-    feedbackDetail: "",
+    description: "",
   });
 
   const navigate = useNavigate();
@@ -34,26 +34,20 @@ function AddFeedback() {
     dispatch(reset());
   }, [dispatch, navigate, isError, isSuccess, message]);
 
-  const { title, category, feedbackDetail } = formData;
+  const { title, category, description } = formData;
 
   function onSubmit(e) {
     e.preventDefault();
 
     console.log(title);
     console.log(category);
-    console.log(feedbackDetail);
+    console.log(description);
 
-    if (!title || !category || !feedbackDetail) {
+    if (!title || !category || !description) {
       console.log("A field should be missing");
       toast.error("Please include all fields");
     } else {
-      const newSuggestion = {
-        title,
-        category,
-        feedbackDetail,
-      };
-
-      dispatch(createSuggestion(newSuggestion));
+      dispatch(createSuggestion({ title, category, description }));
     }
   }
 
@@ -114,8 +108,8 @@ function AddFeedback() {
             <textarea
               className="fontRegular"
               name="feedbackDetail"
-              id="feedbackDetail"
-              value={feedbackDetail}
+              id="description"
+              value={description}
               onChange={onChange}
               rows="5"
             ></textarea>
