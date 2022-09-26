@@ -43,6 +43,10 @@
   color: white;
 }
 
+.active-upvotes:hover {
+  cursor: pointer;
+}
+
 .active-upvotes-img {
   filter: brightness(500%);
 }
