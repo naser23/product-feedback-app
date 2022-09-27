@@ -72,7 +72,6 @@ export const getSuggestion = createAsyncThunk(
   "feedback/get-suggestion",
   async (suggestionId, thunkAPI) => {
     try {
-      console.log(suggestionId);
       const token = thunkAPI.getState().auth.user.token;
       const config = {
         headers: {

@@ -13,16 +13,15 @@ function Suggestion() {
 
   const dispatch = useDispatch();
   const params = useParams();
-  const { suggestionId } = useParams();
-  console.log(suggestionId);
+  const { id } = useParams();
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
 
-    dispatch(getSuggestion(suggestionId));
-  }, [isError, suggestionId, message]);
+    dispatch(getSuggestion(id));
+  }, [isError, id, message]);
 
   return (
     <main className="feedbackDetails">
