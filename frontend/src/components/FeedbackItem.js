@@ -10,11 +10,16 @@ function FeedbackItem({ item }) {
 
   const [isActive, setIsActive] = useState(false);
 
+  function updateItem(item) {
+    setIsActive(!isActive);
+    console.log(item);
+  }
+
   return (
     <div className="feedbackItem">
       <div
         className={isActive ? "active-upvotes" : "upvotes"}
-        onClick={() => setIsActive(!isActive)}
+        onClick={() => !isActive && updateItem(item)}
       >
         <img
           src={UpvoteIcon}

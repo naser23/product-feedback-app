@@ -76,10 +76,11 @@ export const getSuggestion = createAsyncThunk(
 // Change upvote count
 export const changeUpvoteCount = createAsyncThunk(
   "feedback/upvote-count",
-  async (suggestionData, thunkAPI) => {
+  async (suggestionId, thunkAPI) => {
     // find current suggestion
+    // see if user liked suggestion already
+    // increase upvote count by 1
     try {
-      console.log("upvote");
     } catch (error) {
       console.error(error);
     }

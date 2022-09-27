@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 
 // @desc get all suggestions
 // @route GET /api/feedback
-// @access Private(user is already logged in when they hit this route).
+// @access Private (user is already logged in when they hit this route).
 const getSuggestions = asyncHandler(async (req, res) => {
   const suggestions = await Feedback.find(req.body);
   res.status(200).json(suggestions);
@@ -36,4 +36,15 @@ const addSuggestion = asyncHandler(async (req, res) => {
   res.status(201).json(suggestion);
 });
 
-module.exports = { getSuggestions, addSuggestion };
+// @desc Update upvote count
+// @route PUT /api/feedback
+// @access Private (user is already logged in when they hit this route).
+const updateUpvoteCount = asyncHandler(async (req, res) => {
+  res.send(req.body);
+
+  // Look up specific suggestion
+  // find out if user already upvoted
+  // update count by 1
+});
+
+module.exports = { getSuggestions, addSuggestion, updateUpvoteCount };
