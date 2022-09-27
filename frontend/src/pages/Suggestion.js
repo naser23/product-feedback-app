@@ -1,5 +1,7 @@
 import React from "react";
 import LeftArrow from "../assets/shared/icon-arrow-left.svg";
+import UpvoteIcon from "../assets/shared/icon-arrow-up.svg";
+import CommentBubble from "../assets/shared/icon-comments.svg";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +12,10 @@ function Suggestion() {
   const { suggestion, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.feedback
   );
+
+  const { title, category, description, upvotes } = suggestion;
+
+  const [isActive, setIsActive] = useState(false);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -33,6 +39,29 @@ function Suggestion() {
 
         <button className="editFeedback fontSemiBold">Edit Feedback</button>
       </header>
+
+      <div className="feedbackPageItem">
+        <div
+          className={isActive ? "active-upvotes" : "upvotes"}
+          // onClick={() => !isActive && updateItem(item)}
+        >
+          <img
+            src={UpvoteIcon}
+            alt="UpvoteIcon"
+            className={isActive ? "active-upvotes-img" : ""}
+          />
+          <p className="fontRegular">{upvotes}</p>
+        </div>
+        <div className="feedbackText">
+          <h3 className="fontSemiBold">{title}</h3>
+          <p className="fontRegular feedbackDescription">{description}</p>
+          <p className="feedbackCategory fontSemiBold">{category}</p>
+        </div>
+        <div className="commentCount">
+          <img src={CommentBubble} alt="CommentBubble" />
+          <p className="fontSemiBold">2</p>
+        </div>
+      </div>
     </main>
   );
 }
