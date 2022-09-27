@@ -70,7 +70,27 @@ export const getSuggestions = createAsyncThunk(
 // Get singular suggestion
 export const getSuggestion = createAsyncThunk(
   "feedback/get-suggestion",
-  async (suggestionData, thunkAPI) => {}
+  async (suggestionId, thunkAPI) => {
+    try {
+      console.log(suggestionId);
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(API_URL + suggestionId, config);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
 );
 
 // Change upvote count

@@ -2,6 +2,20 @@ const asyncHandler = require("express-async-handler");
 const Feedback = require("../models/feedbackModel");
 const User = require("../models/userModel");
 
+// @desc get single suggestion
+// @route GET /api/feedback/:id
+// @access Private (user is already logged in when they hit this route).
+const getSuggestion = asyncHandler(async (req, res) => {
+  const suggestion = await Feedback.findById(req.params.id);
+
+  if (!suggestion) {
+    res.status(404);
+    throw new Error("Suggestion not found");
+  }
+
+  res.status(200).json(suggestion);
+});
+
 // @desc get all suggestions
 // @route GET /api/feedback
 // @access Private (user is already logged in when they hit this route).
@@ -60,4 +74,9 @@ const updateUpvoteCount = asyncHandler(async (req, res) => {
   // update count by 1
 });
 
-module.exports = { getSuggestions, addSuggestion, updateUpvoteCount };
+module.exports = {
+  getSuggestion,
+  getSuggestions,
+  addSuggestion,
+  updateUpvoteCount,
+};
