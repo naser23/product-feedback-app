@@ -10,7 +10,7 @@ const initialState = {
   message: "",
 };
 
-const API_URL = "/api/feedback";
+const API_URL = "/api/feedback/";
 const ADD_FEEDBACK_URL = "/api/feedback/add-feedback";
 
 // Creating new suggestion
@@ -80,12 +80,29 @@ export const changeUpvoteCount = createAsyncThunk(
     // find current suggestion
     // see if user liked suggestion already
     // increase upvote count by 1
-    try {
-    } catch (error) {
-      console.error(error);
-    }
-
-    // make post request to update the upvote count
+    // try {
+    //   const token = thunkAPI.getState().auth.user.token;
+    //   const config = {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   };
+    //   const response = await axios.put(
+    //     API_URL + suggestionId,
+    //     { upvotes: 1 },
+    //     config
+    //   );
+    //   return response.data;
+    // } catch (error) {
+    //   const message =
+    //     (error.response &&
+    //       error.response.data &&
+    //       error.response.data.message) ||
+    //     error.message ||
+    //     error.toString();
+    //   return thunkAPI.rejectWithValue(message);
+    // }
+    // make put request to update the upvote count
   }
 );
 
@@ -141,12 +158,12 @@ export const feedbackSlice = createSlice({
       // Reducers for changing upvote count
       .addCase(changeUpvoteCount.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.suggestion.map((suggestion) =>
-          // find the suggestion using the _id and increase the upvotes by 1
-          suggestion._id === action.payload._id
-            ? suggestion.upvotes + 1
-            : suggestion
-        );
+        // state.suggestions.map((suggestion) =>
+        //   // find the suggestion using the _id and increase the upvotes by 1
+        //   suggestion._id === action.payload._id
+        //     ? suggestion.upvotes + 1
+        //     : suggestion
+        // );
       });
   },
 });

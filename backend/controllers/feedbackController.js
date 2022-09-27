@@ -40,8 +40,21 @@ const addSuggestion = asyncHandler(async (req, res) => {
 // @route PUT /api/feedback
 // @access Private (user is already logged in when they hit this route).
 const updateUpvoteCount = asyncHandler(async (req, res) => {
-  res.send(req.body);
+  const user = await User.findById(req.user.id);
 
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  const suggestion = await Feedback.findById(req.params.id);
+
+  if (!suggestion) {
+    res.status(404);
+    throw new Error("Ticket not found");
+  }
+
+  res.send(suggestion);
   // Look up specific suggestion
   // find out if user already upvoted
   // update count by 1

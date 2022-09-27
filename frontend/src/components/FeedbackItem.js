@@ -10,9 +10,11 @@ function FeedbackItem({ item }) {
 
   const [isActive, setIsActive] = useState(false);
 
+  const dispatch = useDispatch();
+
   function updateItem(item) {
     setIsActive(!isActive);
-    console.log(item);
+    dispatch(changeUpvoteCount(item._id));
   }
 
   return (

@@ -8,6 +8,7 @@ const {
 
 router.get("/", getSuggestions);
 router.post("/add-feedback", addSuggestion);
-router.put("/add-feedback", updateUpvoteCount);
+
+router.route("/:id").put(updateUpvoteCount);
 
 module.exports = router;
