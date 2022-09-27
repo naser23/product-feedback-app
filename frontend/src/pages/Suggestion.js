@@ -3,13 +3,13 @@ import LeftArrow from "../assets/shared/icon-arrow-left.svg";
 import UpvoteIcon from "../assets/shared/icon-arrow-up.svg";
 import CommentBubble from "../assets/shared/icon-comments.svg";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSuggestion, reset } from "../features/feedback/feedbackSlice";
 import { toast } from "react-toastify";
 
 function Suggestion() {
-  const { suggestion, isLoading, isError, isSuccess, message } = useSelector(
+  const { suggestion, isError, message } = useSelector(
     (state) => state.feedback
   );
 
@@ -17,9 +17,15 @@ function Suggestion() {
 
   const [isActive, setIsActive] = useState(false);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = useParams();
+
+  function updateItem(item) {
+    setIsActive(!isActive);
+    // dispatch(changeUpvoteCount(item._id));
+  }
 
   useEffect(() => {
     if (isError) {
@@ -32,7 +38,7 @@ function Suggestion() {
   return (
     <main className="feedbackDetails">
       <header className="topButtons">
-        <button className="goBack fontSemiBold">
+        <button className="goBack fontSemiBold" onClick={() => navigate("/")}>
           <img src={LeftArrow} alt="Go back" />
           Go Back
         </button>
@@ -43,7 +49,7 @@ function Suggestion() {
       <div className="feedbackPageItem">
         <div
           className={isActive ? "active-upvotes" : "upvotes"}
-          // onClick={() => !isActive && updateItem(item)}
+          onClick={() => !isActive && updateItem()}
         >
           <img
             src={UpvoteIcon}

@@ -74,6 +74,11 @@ const updateUpvoteCount = asyncHandler(async (req, res) => {
   // update count by 1
 });
 
+// @desc Update upvote count
+// @route PUT /api/feedback
+// @access Private (user is already logged in when they hit this route).
+const updateSuggestion = asyncHandler(async (req, res) => {});
+
 module.exports = {
   getSuggestion,
   getSuggestions,

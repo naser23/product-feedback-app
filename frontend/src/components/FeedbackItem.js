@@ -3,8 +3,6 @@ import { useState } from "react";
 import UpvoteIcon from "../assets/shared/icon-arrow-up.svg";
 import CommentBubble from "../assets/shared/icon-comments.svg";
 import { useNavigate } from "react-router-dom";
-import { reset } from "../features/feedback/feedbackSlice";
-import { useDispatch } from "react-redux";
 
 function FeedbackItem({ item }) {
   const { category, description, title, upvotes } = item;
@@ -12,19 +10,10 @@ function FeedbackItem({ item }) {
   const [isActive, setIsActive] = useState(false);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // function updateItem(item) {
-  //   setIsActive(!isActive);
-  //   dispatch(changeUpvoteCount(item._id));
-  // }
 
   return (
     <div className="feedbackItem" onClick={() => navigate(`/${item._id}`)}>
-      <div
-        className={isActive ? "active-upvotes" : "upvotes"}
-        // onClick={() => !isActive && updateItem(item)}
-      >
+      <div className={isActive ? "active-upvotes" : "upvotes"}>
         <img
           src={UpvoteIcon}
           alt="UpvoteIcon"

@@ -13,6 +13,10 @@
   gap: 1rem;
 }
 
+.goBack:hover {
+  cursor: pointer;
+}
+
 .editFeedback {
   border: none;
   background-color: var(--blue);
@@ -23,6 +27,7 @@
 }
 
 .feedbackPageItem {
+  width: 100%;
   padding: 1rem;
   display: grid;
   grid-template-rows: 1fr;
