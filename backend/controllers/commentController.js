@@ -21,7 +21,7 @@ const getComments = asyncHandler(async (req, res) => {
     throw new Error("Suggestion not found");
   }
 
-  res.send(suggestion);
+  res.send([user, suggestion]);
 });
 
 module.exports = { getComments };
