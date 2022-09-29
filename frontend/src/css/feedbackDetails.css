@@ -36,6 +36,67 @@
   border-radius: 10px;
 }
 
+/* Comments section styling */
+
+.comments {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.commentsCountHeader {
+  padding-bottom: 1rem;
+}
+
+.commmentItem {
+  width: 100%;
+}
+
+.commentsHeader {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+  place-items: center start;
+}
+
+.commentsHeader h4 {
+  font-size: 1rem;
+}
+
+.profilePicture {
+  width: 2.5rem;
+  height: 2rem;
+}
+
+.username {
+  color: var(--dark-bluish-gray);
+}
+
+.reply {
+  background: none;
+  border: none;
+  color: blue;
+  font-size: 15px;
+}
+
+.commentText {
+  padding-top: 1rem;
+  color: var(--dark-bluish-gray);
+}
+
+.grayLineBreak {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--dark-bluish-gray);
+  margin-top: 3rem;
+}
+
+/* ////////////////////////////// */
+
 @media (min-width: 567.98px) {
   .feedbackPageItem {
     width: 100%;

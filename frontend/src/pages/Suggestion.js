@@ -1,17 +1,21 @@
 import React from "react";
 import LeftArrow from "../assets/shared/icon-arrow-left.svg";
 import UpvoteIcon from "../assets/shared/icon-arrow-up.svg";
+import CommentList from "../components/CommentList";
 import CommentBubble from "../assets/shared/icon-comments.svg";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSuggestion, reset } from "../features/feedback/feedbackSlice";
+import { getComments } from "../features/comments/commentSlice";
 import { toast } from "react-toastify";
 
 function Suggestion() {
   const { suggestion, isError, message } = useSelector(
     (state) => state.feedback
   );
+
+  const { comments } = useSelector((state) => state.comments);
 
   const { title, category, description, upvotes } = suggestion;
 
@@ -33,6 +37,7 @@ function Suggestion() {
     }
 
     dispatch(getSuggestion(id));
+    // dispatch(getComments());
   }, [isError, id, message]);
 
   return (
@@ -68,6 +73,8 @@ function Suggestion() {
           <p className="fontSemiBold">2</p>
         </div>
       </div>
+
+      <CommentList />
     </main>
   );
 }
