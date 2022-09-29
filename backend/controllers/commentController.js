@@ -14,14 +14,14 @@ const getComments = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const suggestion = Feedback.findById(req.params.id);
+  const suggestion = await Feedback.findById(req.params.id);
 
   if (!suggestion) {
     res.status(404);
     throw new Error("Suggestion not found");
   }
 
-  res.send(user);
+  res.send(suggestion);
 });
 
 module.exports = { getComments };
