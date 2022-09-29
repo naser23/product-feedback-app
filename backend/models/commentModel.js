@@ -16,7 +16,7 @@ const commentSchema = mongoose.Schema(
     },
 
     text: {
-      type: text,
+      type: String,
       required: [true, "please add some text"],
     },
 
@@ -25,14 +25,10 @@ const commentSchema = mongoose.Schema(
       required: false,
       default: false,
     },
-
-    replies: {
-      type: Array,
-      required: false,
-      default: false,
-    },
   },
   {
     timestamps: true,
   }
 );
+
+module.exports = mongoose.model("Comment", commentSchema);
