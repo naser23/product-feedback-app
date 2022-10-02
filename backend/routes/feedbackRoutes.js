@@ -12,12 +12,11 @@ const {
 router.route("/").get(protect, getSuggestions);
 router.route("/add-feedback").post(protect, addSuggestion);
 
+// Re Route into notes router
+router.use("/:id/comments", commentRouter);
 router
   .route("/:id")
   .get(protect, getSuggestion)
   .put(protect, updateUpvoteCount);
-
-// Re Route into notes router
-router.use("/:id/comments", commentRouter);
 
 module.exports = router;

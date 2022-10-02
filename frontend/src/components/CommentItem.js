@@ -7,7 +7,7 @@ function CommentItem() {
       <div className="commentsHeader">
         <CgProfile className="profilePicture" />
         <span className="nameText">
-          <h4 className="fontsemiBold">First Last</h4>
+          <h4 className="fontSemiBold">First Last</h4>
           <p className="username fontRegular">@First.Last</p>
         </span>
         <button className="reply fontSemiBold">Reply</button>
