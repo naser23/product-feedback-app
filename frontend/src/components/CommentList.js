@@ -27,8 +27,10 @@ function CommentList() {
 
   return (
     <section className="comments">
-      <h1 className="commentsCountHeader">4 Comments</h1>
-      <CommentItem />
+      <h1 className="commentsCountHeader">{comments.length} comments</h1>
+      {comments.map((comment) => (
+        <CommentItem key={comments.indexOf(comment)} comment={comment} />
+      ))}
     </section>
   );
 }
