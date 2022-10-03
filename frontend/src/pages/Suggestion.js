@@ -36,14 +36,11 @@ function Suggestion() {
   const [characterAmount, setCharacterAmount] = useState(250);
 
   function onTextChange(e) {
-    setCommentText(e.target.value);
-    console.log(commentText);
-    // let commentLength = commentText.length + 1;
+    setCommentText(e.currentTarget.value);
 
-    // const newCharacters =
-    //   commentText.length > 250 ? 0 : 250 - commentText.length;
-    // setCharacterAmount(newCharacters);
-    // console.log(commentLength);
+    const newCharacters =
+      commentText.length > 250 ? 0 : 250 - commentText.length;
+    setCharacterAmount(newCharacters);
   }
 
   function trackCharacterAmount() {}
