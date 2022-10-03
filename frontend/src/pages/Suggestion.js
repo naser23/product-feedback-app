@@ -31,6 +31,27 @@ function Suggestion() {
     // dispatch(changeUpvoteCount(item._id));
   }
 
+  // add Comment functionality
+  const [commentText, setCommentText] = useState("");
+  const [characterAmount, setCharacterAmount] = useState(250);
+
+  function onTextChange(e) {
+    setCommentText(e.target.value);
+    console.log(commentText);
+    // let commentLength = commentText.length + 1;
+
+    // const newCharacters =
+    //   commentText.length > 250 ? 0 : 250 - commentText.length;
+    // setCharacterAmount(newCharacters);
+    // console.log(commentLength);
+  }
+
+  function trackCharacterAmount() {}
+
+  function onCommentSubmit(e) {
+    e.preventDefault();
+  }
+
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -82,11 +103,16 @@ function Suggestion() {
           className="addCommentText fontRegular"
           name="addComment"
           id="commentText"
+          value={commentText}
+          onChange={onTextChange}
           placeholder="Type your comment here"
+          maxLength={250}
           rows="5"
         ></textarea>
         <div className="addCommentFooter">
-          <p className="characterCount fontRegular">250 Characters left</p>
+          <p className="characterCount fontRegular">
+            {characterAmount} Characters left
+          </p>
           <button className="postComment fontSemiBold">Post Comment</button>
         </div>
       </section>
