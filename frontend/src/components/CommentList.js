@@ -23,8 +23,6 @@ function CommentList() {
     };
   }, [dispatch, isSuccess]);
 
-  console.log(comments);
-
   return (
     <section className="comments">
       <h1 className="commentsCountHeader">{comments.length} comments</h1>

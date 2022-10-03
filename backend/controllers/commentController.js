@@ -21,7 +21,7 @@ const getComments = asyncHandler(async (req, res) => {
     throw new Error("Suggestion not found");
   }
 
-  const comments = await Comment.find(req.body);
+  const comments = await Comment.find({ feedback: req.params.id });
   res.status(200).json(comments);
 });
 
