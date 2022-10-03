@@ -75,6 +75,21 @@ function Suggestion() {
       </div>
 
       <CommentList />
+
+      <section className="addComment">
+        <h3 className="addCommentHeader fontSemiBold">Add Comment</h3>
+        <textarea
+          className="addCommentText fontRegular"
+          name="addComment"
+          id="commentText"
+          placeholder="Type your comment here"
+          rows="5"
+        ></textarea>
+        <div className="addCommentFooter">
+          <p className="characterCount fontRegular">250 Characters left</p>
+          <button className="postComment fontSemiBold">Post Comment</button>
+        </div>
+      </section>
     </main>
   );
 }

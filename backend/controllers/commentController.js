@@ -21,6 +21,7 @@ const getComments = asyncHandler(async (req, res) => {
     throw new Error("Suggestion not found");
   }
 
+  // get all comments attached to specific suggestion
   const comments = await Comment.find({ feedback: req.params.id });
   res.status(200).json(comments);
 });
