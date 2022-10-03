@@ -17,7 +17,7 @@ function AddFeedback() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isError, isSuccess, isLoading, message } = useSelector(
+  const { isError, isSuccess, message } = useSelector(
     (state) => state.feedback
   );
 
@@ -39,12 +39,7 @@ function AddFeedback() {
   function onSubmit(e) {
     e.preventDefault();
 
-    console.log(title);
-    console.log(category);
-    console.log(description);
-
     if (!title || !category || !description) {
-      console.log("A field should be missing");
       toast.error("Please include all fields");
     } else {
       dispatch(createSuggestion({ title, category, description }));

@@ -6,9 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getComments, reset } from "../features/comments/commentSlice";
 
 function CommentList() {
-  const { comments, isLoading, isSuccess } = useSelector(
-    (state) => state.comments
-  );
+  const { comments, isSuccess } = useSelector((state) => state.comments);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -21,7 +19,7 @@ function CommentList() {
         dispatch(reset());
       }
     };
-  }, [dispatch, isSuccess]);
+  }, [dispatch, id, isSuccess]);
 
   return (
     <section className="comments">

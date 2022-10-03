@@ -98,6 +98,9 @@
 /* ////////////////////////////// */
 
 /* add comment styling */
+.addCommentSection {
+  width: 100%;
+}
 
 .addComment {
   width: 100%;

@@ -6,8 +6,8 @@ import CommentBubble from "../assets/shared/icon-comments.svg";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getSuggestion, reset } from "../features/feedback/feedbackSlice";
-import { getComments } from "../features/comments/commentSlice";
+import { getSuggestion } from "../features/feedback/feedbackSlice";
+import { createComment, reset } from "../features/comments/commentSlice";
 import { toast } from "react-toastify";
 
 function Suggestion() {
@@ -15,15 +15,12 @@ function Suggestion() {
     (state) => state.feedback
   );
 
-  const { comments } = useSelector((state) => state.comments);
-
   const { title, category, description, upvotes } = suggestion;
 
   const [isActive, setIsActive] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const params = useParams();
   const { id } = useParams();
 
   function updateItem(item) {
@@ -43,11 +40,18 @@ function Suggestion() {
     setCharacterAmount(newCharacters);
   }
 
-  function trackCharacterAmount() {}
-
   function onCommentSubmit(e) {
     e.preventDefault();
+
+    if (!commentText) {
+      toast.error("Please include comment text");
+    }
+
+    dispatch(createComment(id));
+    dispatch(reset());
   }
+
+  /////////////////////////////////////////
 
   useEffect(() => {
     if (isError) {
@@ -55,8 +59,7 @@ function Suggestion() {
     }
 
     dispatch(getSuggestion(id));
-    // dispatch(getComments());
-  }, [isError, id, message]);
+  }, [dispatch, isError, id, message]);
 
   return (
     <main className="feedbackDetails">
@@ -94,24 +97,26 @@ function Suggestion() {
 
       <CommentList />
 
-      <section className="addComment">
-        <h3 className="addCommentHeader fontSemiBold">Add Comment</h3>
-        <textarea
-          className="addCommentText fontRegular"
-          name="addComment"
-          id="commentText"
-          value={commentText}
-          onChange={onTextChange}
-          placeholder="Type your comment here"
-          maxLength={250}
-          rows="5"
-        ></textarea>
-        <div className="addCommentFooter">
-          <p className="characterCount fontRegular">
-            {characterAmount} Characters left
-          </p>
-          <button className="postComment fontSemiBold">Post Comment</button>
-        </div>
+      <section className="addCommentSection">
+        <form className="addComment" onSubmit={onCommentSubmit}>
+          <h3 className="addCommentHeader fontSemiBold">Add Comment</h3>
+          <textarea
+            className="addCommentText fontRegular"
+            name="addComment"
+            id="commentText"
+            value={commentText}
+            onChange={onTextChange}
+            placeholder="Type your comment here"
+            maxLength={250}
+            rows="5"
+          ></textarea>
+          <div className="addCommentFooter">
+            <p className="characterCount fontRegular">
+              {characterAmount} Characters left
+            </p>
+            <button className="postComment fontSemiBold">Post Comment</button>
+          </div>
+        </form>
       </section>
     </main>
   );
