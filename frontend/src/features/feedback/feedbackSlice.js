@@ -125,6 +125,31 @@ export const changeUpvoteCount = createAsyncThunk(
   }
 );
 
+// Get suggestions of singular category
+export const getSuggestionsOfCategory = createAsyncThunk(
+  "feedback/filter-for-category",
+  async (category, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(API_URL, config);
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const feedbackSlice = createSlice({
   name: "feedback",
   initialState,
@@ -183,6 +208,10 @@ export const feedbackSlice = createSlice({
         //     ? suggestion.upvotes + 1
         //     : suggestion
         // );
+      })
+      .addCase(getSuggestionsOfCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.suggestions.map((suggestion) => suggestion.category);
       });
   },
 });

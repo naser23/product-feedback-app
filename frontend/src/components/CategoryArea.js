@@ -1,11 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  getSuggestionsOfCategory,
+  reset,
+} from "../features/feedback/feedbackSlice";
 
 function CategoryArea() {
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
-  const [feedbackCategory, setFeedbackCategory] = useState("");
+  const [feedbackCategory, setFeedbackCategory] = useState("All");
   const [isActive, setIsActive] = useState(false);
+  const dispatch = useDispatch();
+
+  function categoryFilter(category) {
+    setFeedbackCategory(category);
+    dispatch(getSuggestionsOfCategory(category));
+    dispatch(reset());
+  }
+  // get all the suggestions that match feedback category and filter out the rest.
 
   return (
     <section className="categoryArea">
@@ -18,7 +31,7 @@ function CategoryArea() {
                 : "active category fontSemiBold"
             }
             key={categories.indexOf(category)}
-            onClick={() => setFeedbackCategory(category)}
+            onClick={() => categoryFilter(category)}
           >
             {category}
           </p>
