@@ -6,10 +6,11 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import RoadmapPage from "./pages/RoadmapPage";
 import PrivateRoute from "./components/PrivateRoute";
-import "react-toastify/dist/ReactToastify.css";
-import "./css/main.css";
 import AddFeedback from "./pages/AddFeedback";
 import Suggestion from "./pages/Suggestion";
+import AddComment from "./pages/AddComment";
+import "react-toastify/dist/ReactToastify.css";
+import "./css/main.css";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/roadmap" element={<RoadmapPage />} />
               <Route path="/add-feedback" element={<AddFeedback />} />
               <Route path="/:id" element={<Suggestion />} />
+              <Route path="/:id/add-comment" element={<AddComment />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

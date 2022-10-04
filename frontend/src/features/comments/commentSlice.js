@@ -44,18 +44,18 @@ export const getComments = createAsyncThunk(
 // Create new comment
 export const createComment = createAsyncThunk(
   "comments/createComment",
-  async (suggestionId, thunkAPI) => {
+  async (commentData, thunkAPI) => {
     try {
-      console.log(suggestionId);
+      const { id, commentText } = commentData;
       const token = thunkAPI.getState().auth.user.token;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-
       const response = await axios.post(
-        API_URL + suggestionId + "/comments",
+        API_URL + id + "/comments",
+        { text: commentText },
         config
       );
       return response.data;

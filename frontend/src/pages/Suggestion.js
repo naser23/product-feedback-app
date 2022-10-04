@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSuggestion } from "../features/feedback/feedbackSlice";
-import { createComment, reset } from "../features/comments/commentSlice";
 import { toast } from "react-toastify";
 
 function Suggestion() {
@@ -28,31 +27,6 @@ function Suggestion() {
     // dispatch(changeUpvoteCount(item._id));
   }
 
-  // add Comment functionality
-  const [commentText, setCommentText] = useState("");
-  const [characterAmount, setCharacterAmount] = useState(250);
-
-  function onTextChange(e) {
-    setCommentText(e.currentTarget.value);
-
-    const newCharacters =
-      commentText.length > 250 ? 0 : 250 - commentText.length;
-    setCharacterAmount(newCharacters);
-  }
-
-  function onCommentSubmit(e) {
-    e.preventDefault();
-
-    if (!commentText) {
-      toast.error("Please include comment text");
-    }
-
-    dispatch(createComment(id));
-    dispatch(reset());
-  }
-
-  /////////////////////////////////////////
-
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -69,7 +43,12 @@ function Suggestion() {
           Go Back
         </button>
 
-        <button className="editFeedback fontSemiBold">Edit Feedback</button>
+        <button
+          className="editFeedback fontSemiBold"
+          onClick={() => navigate(`/${id}/add-comment`)}
+        >
+          Add Comment
+        </button>
       </header>
 
       <div className="feedbackPageItem">
@@ -96,28 +75,6 @@ function Suggestion() {
       </div>
 
       <CommentList />
-
-      <section className="addCommentSection">
-        <form className="addComment" onSubmit={onCommentSubmit}>
-          <h3 className="addCommentHeader fontSemiBold">Add Comment</h3>
-          <textarea
-            className="addCommentText fontRegular"
-            name="addComment"
-            id="commentText"
-            value={commentText}
-            onChange={onTextChange}
-            placeholder="Type your comment here"
-            maxLength={250}
-            rows="5"
-          ></textarea>
-          <div className="addCommentFooter">
-            <p className="characterCount fontRegular">
-              {characterAmount} Characters left
-            </p>
-            <button className="postComment fontSemiBold">Post Comment</button>
-          </div>
-        </form>
-      </section>
     </main>
   );
 }
