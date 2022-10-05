@@ -108,6 +108,7 @@
   background-color: white;
   padding: 5rem 1rem;
   gap: 1rem;
+  border-radius: 10px;
 }
 
 .noFeedbackHeader {
@@ -195,8 +196,15 @@
   }
 
   .noFeedback {
-    padding: 5rem 12rem;
+    padding: 5rem 5rem;
   }
 }
 @media (min-width: 1199.98px) {
+  .noFeedback {
+    padding: 5rem 10rem;
+  }
+
+  .noFeedbackHeader {
+    font-size: 1.25rem;
+  }
 }
