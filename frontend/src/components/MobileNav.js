@@ -1,10 +1,26 @@
 import React from "react";
-import Roadmap from "./Roadmap";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  getSuggestionsOfCategory,
+  getSuggestions,
+} from "../features/feedback/feedbackSlice";
 import { Link } from "react-router-dom";
 import RoadmapPage from "../pages/RoadmapPage";
 
 function MobileNav() {
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
+
+  const [feedbackCategory, setFeedbackCategory] = useState("All");
+  const dispatch = useDispatch();
+
+  function categoryFilter(category) {
+    // this is not updating in time
+    setFeedbackCategory(category);
+    dispatch(getSuggestionsOfCategory(category));
+
+    // dispatch(reset());
+  }
 
   return (
     <nav className="mobileNav">
@@ -12,8 +28,17 @@ function MobileNav() {
         <div className="categoriesMobile">
           {categories.map((category) => (
             <p
-              className="categoryMobile fontSemiBold"
+              className={
+                feedbackCategory !== category
+                  ? "category fontSemiBold"
+                  : "active category fontSemiBold"
+              }
               key={categories.indexOf(category)}
+              onClick={() =>
+                category === "All"
+                  ? dispatch(getSuggestions())
+                  : categoryFilter(category)
+              }
             >
               {category}
             </p>

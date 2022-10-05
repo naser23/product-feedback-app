@@ -4,14 +4,12 @@ import { useDispatch } from "react-redux";
 import {
   getSuggestionsOfCategory,
   getSuggestions,
-  reset,
 } from "../features/feedback/feedbackSlice";
 
 function CategoryArea() {
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   const [feedbackCategory, setFeedbackCategory] = useState("All");
-  const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 
   function categoryFilter(category) {
