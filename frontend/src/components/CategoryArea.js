@@ -15,13 +15,10 @@ function CategoryArea() {
   const dispatch = useDispatch();
 
   function categoryFilter(category) {
+    // this is not updating in time
     setFeedbackCategory(category);
+    dispatch(getSuggestionsOfCategory(category));
 
-    if (feedbackCategory === "All") {
-      dispatch(getSuggestions());
-    } else {
-      dispatch(getSuggestionsOfCategory(category));
-    }
     // dispatch(reset());
   }
   // get all the suggestions that match feedback category and filter out the rest.
@@ -37,7 +34,11 @@ function CategoryArea() {
                 : "active category fontSemiBold"
             }
             key={categories.indexOf(category)}
-            onClick={() => categoryFilter(category)}
+            onClick={() =>
+              category === "All"
+                ? dispatch(getSuggestions())
+                : categoryFilter(category)
+            }
           >
             {category}
           </p>
