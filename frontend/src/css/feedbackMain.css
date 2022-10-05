@@ -95,6 +95,9 @@
   transition: all 0.2s ease-in-out;
 }
 
+.noFeedbackContainer {
+}
+
 @media (min-width: 567.98px) {
   .feedbackItem {
     margin: 1rem 0;
