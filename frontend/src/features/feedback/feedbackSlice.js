@@ -137,7 +137,11 @@ export const getSuggestionsOfCategory = createAsyncThunk(
         },
       };
       const response = await axios.get(API_URL, config);
-      return response.data;
+      const newArr = response.data.filter(
+        (suggestion) => suggestion.category === category
+      );
+      console.log(newArr);
+      return newArr;
     } catch (error) {
       const message =
         (error.response &&
@@ -211,7 +215,7 @@ export const feedbackSlice = createSlice({
       })
       .addCase(getSuggestionsOfCategory.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.suggestions.map((suggestion) => suggestion.category);
+        state.suggestions = action.payload;
       });
   },
 });

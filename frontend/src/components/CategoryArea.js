@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   getSuggestionsOfCategory,
+  getSuggestions,
   reset,
 } from "../features/feedback/feedbackSlice";
 
@@ -15,8 +16,13 @@ function CategoryArea() {
 
   function categoryFilter(category) {
     setFeedbackCategory(category);
-    dispatch(getSuggestionsOfCategory(category));
-    dispatch(reset());
+
+    if (feedbackCategory === "All") {
+      dispatch(getSuggestions());
+    } else {
+      dispatch(getSuggestionsOfCategory(category));
+    }
+    // dispatch(reset());
   }
   // get all the suggestions that match feedback category and filter out the rest.
 

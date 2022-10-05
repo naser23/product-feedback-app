@@ -74,6 +74,11 @@ const updateUpvoteCount = asyncHandler(async (req, res) => {
   // update count by 1
 });
 
+// @desc Get suggestions by category
+// @route PUT /api/feedback
+// @access Private (user is already logged in when they hit this route).
+const getSuggestionsByCategory = asyncHandler(async (req, res) => {});
+
 // @desc Update upvote count
 // @route PUT /api/feedback
 // @access Private (user is already logged in when they hit this route).
